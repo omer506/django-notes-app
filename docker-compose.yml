@@ -16,6 +16,7 @@ services:
   django_app:
 #    build:
 #      context: .
+#
     image: omernasim/my-notes-app
     container_name: "django_cont"
     ports:
