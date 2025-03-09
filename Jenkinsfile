@@ -18,7 +18,7 @@ pipeline {
         stage("Push to Docker Hub"){
             steps {
                 echo "Pushing image to Docker Hub..............."
-                winCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                withCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
                 sh "docker tag my-notes-app omernasim/my-notes-app:latest"
                 sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                 sh "docker push omernasim/my-notes-app:latest"
